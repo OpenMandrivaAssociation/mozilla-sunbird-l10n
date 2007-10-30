@@ -2,8 +2,8 @@
 
 %define name    mozilla-sunbird-l10n
 %define oname   mozilla-sunbird
-%define version 0.5
-%define release %mkrel 2
+%define version 0.7
+%define release %mkrel 1
 
 %define sunbird_package mozilla-sunbird
 %define sunbird_version %{version}
@@ -638,7 +638,7 @@ unzip  %SOURCE2
 mkdir -p %buildroot%{mozillalibdir}/extensions/langpack-%{locale_da}@sunbird.mozilla.org/
 cp -f -r * %buildroot%{mozillalibdir}/extensions/langpack-%{locale_da}@sunbird.mozilla.org/
 cd %buildroot%{mozillalibdir}/extensions/langpack-%{locale_da}@sunbird.mozilla.org/
-patch -p0 < %{PATCH2}
+#patch -p0 < %{PATCH2}
 cd -
 rm -fr *
 
