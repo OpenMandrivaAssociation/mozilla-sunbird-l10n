@@ -17,6 +17,7 @@ Release:   %{release}
 License:   GPL
 Group:     Networking/WWW
 Url:       http://www.mozilla.org/
+BuildRoot: %{_buildroot}
 BuildRequires: libxml2-utils
 
 %description
