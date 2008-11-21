@@ -136,7 +136,7 @@ Version: %{version}
 Release: %{release}
 License: GPL
 Group: Networking/WWW
-Url: http://www.mozilla.org/
+Url: http://www.mozilla.org/projects/calendar/sunbird/
 # Language package template
 Source0: %{name}-template.spec
 Patch0: mozilla-sunbird-da-fix-xml.patch
