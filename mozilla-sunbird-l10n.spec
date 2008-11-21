@@ -1,7 +1,7 @@
 %define name    mozilla-sunbird-l10n
 %define oname   mozilla-sunbird
-%define version 0.8
-%define release %mkrel 4
+%define version 0.9
+%define release %mkrel 1
 
 %define sunbird_package mozilla-sunbird
 %define sunbird_version %{version}
@@ -9,13 +9,13 @@
 %define xpidir http://releases.mozilla.org/pub/mozilla.org/calendar/sunbird/releases/%version/langpacks/
 
 # Supported l10n language lists
-%define langlist	ca cs da de es_AR es_ES eu fr ga hu it ja ka ko lt mk mn nb_NO nl pa_IN pl pt_BR pt_PT ru sk sl sv_SE tr uk zh_CN
+%define langlist	ca cs da de es_AR es_ES eu fr ga hu is it ja ka ko lt mk mn nb_NO nl nn_NO pa_IN pl pt_BR pt_PT ro ru sk sl sv_SE tr uk zh_CN zh_TW
 
 # Disabled l10n languages, for any reason
 %define disabled_langlist	%{nil}
 
 # Disabled myspell dicts, for any reason
-%define disabled_dict_langlist	eu ja ko mk mn pa_IN tr zh_CN
+%define disabled_dict_langlist	eu ja ko mk mn pa_IN tr zh_CN zh_TW
 
 %define use_dict 1
 %if %mdkversion == 200600
@@ -48,6 +48,8 @@
 %define langname_ga Irish
 %define language_hu hu
 %define langname_hu Hungarian
+%define language_is is
+%define langname_is Icelandic
 %define language_it it
 %define langname_it Italian
 %define language_ja ja
@@ -66,6 +68,8 @@
 %define langname_nb_NO Norwegian Bokmaal
 %define language_nl nl
 %define langname_nl Dutch
+%define language_nn_NO nn-NO
+%define langname_nn_NO Norwegian Nynorsk
 %define language_pa_IN pa-IN
 %define langname_pa_IN Punjabi (gurmukhi)
 %define language_pl pl
@@ -74,6 +78,8 @@
 %define langname_pt_BR Brazilian portuguese
 %define language_pt_PT pt-PT
 %define langname_pt_PT Portuguese
+%define language_ro ro
+%define langname_ro Romanian
 %define language_ru ru
 %define langname_ru Russian
 %define language_sk sk
@@ -88,6 +94,8 @@
 %define langname_uk Ukrainian
 %define language_zh_CN zh-CN
 %define langname_zh_CN Simplified Chinese
+%define language_zh_TW zh-TW
+%define langname_zh_TW Traditional Chinese
 
 # --- Danger line ---
 
