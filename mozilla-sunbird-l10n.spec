@@ -139,7 +139,6 @@ Group: Networking/WWW
 Url: http://www.mozilla.org/projects/calendar/sunbird/
 # Language package template
 Source0: %{name}-template.spec
-Patch0: mozilla-sunbird-da-fix-xml.patch
 # l10n sources
 %{expand:%(\
 	for lang in %langlist; do\
@@ -217,14 +216,6 @@ for lang in %langlist; do
 	fi
 	cd ..
 done
-
-cd da
-%patch0 -p0
-cd -
-
-cd it
-%patch0 -p0
-cd -
 
 %build
 # All install.rdf files must validate
