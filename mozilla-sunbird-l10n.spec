@@ -1,7 +1,7 @@
 %define name    mozilla-sunbird-l10n
 %define oname   mozilla-sunbird
 %define version 0.9
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define sunbird_package mozilla-sunbird
 %define sunbird_version %{version}
@@ -122,14 +122,6 @@
 %define myspell_fr myspell-fr_FR
 %endif
 
-# Macro for easy adding i18n sources
-# auto-increment as called.
-%define src 1
-
-%define l10nsrc() Source%src: %{xpidir}/%{1}.xpi\
-%define src2 %(echo $((%src+1)))\
-%define src %{src2}
-
 Summary: Localizations for Sunbird (virtual package)
 Name: %{name}
 Version: %{version}
@@ -141,8 +133,10 @@ Url: http://www.mozilla.org/projects/calendar/sunbird/
 Source0: %{name}-template.spec
 # l10n sources
 %{expand:%(\
+	i=1;\
 	for lang in %langlist; do\
-		echo "%%{expand:%%l10nsrc %%{language_$lang}}";\
+		echo "%%{expand:Source$i: %{xpidir}/%%{language_$lang}.xpi}";\
+		i=$[i+1];\
 	done\
 	)
 }
