@@ -1,7 +1,7 @@
 %define name    mozilla-sunbird-l10n
 %define oname   mozilla-sunbird
 %define version 0.9
-%define release %mkrel 3
+%define release %mkrel 4
 
 %define sunbird_package mozilla-sunbird
 %define sunbird_version %{version}
