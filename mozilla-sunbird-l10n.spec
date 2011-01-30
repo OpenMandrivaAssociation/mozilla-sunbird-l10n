@@ -1,11 +1,12 @@
 %define name    mozilla-sunbird-l10n
 %define oname   mozilla-sunbird
 %define version 0.9
-%define release %mkrel 4
+%define release %mkrel 5
 
 %define sunbird_package mozilla-sunbird
 %define sunbird_version %{version}
-%define mozillalibdir %{_libdir}/sunbird-%{sunbird_version}
+%define sunbird_appid \{718e30fb-e89b-41dd-9da7-e25a45638b28\}
+%define sunbird_extdir %{_datadir}/mozilla/extensions/%{sunbird_appid}
 %define xpidir http://releases.mozilla.org/pub/mozilla.org/calendar/sunbird/releases/%version/langpacks/
 
 # Supported l10n language lists
@@ -129,8 +130,9 @@ Release: %{release}
 License: GPL
 Group: Networking/WWW
 Url: http://www.mozilla.org/projects/calendar/sunbird/
+BuildArch: noarch
 # Language package template
-Source0: %{name}-template.spec
+Source0: %{name}-template.in
 # l10n sources
 %{expand:%(\
 	i=1;\
@@ -159,7 +161,7 @@ Localizations for Sunbird
 # Expand all languages packages.
 %{expand:%(\
 	for lang in %langlist; do\
-		echo "%%{expand:%%(sed "s!__LANG__!$lang!g" %{_sourcedir}/%{name}-template.spec 2> /dev/null)}";\
+		echo "%%{expand:%%(sed "s!__LANG__!$lang!g" %{_sourcedir}/%{name}-template.in 2> /dev/null)}";\
 	done\
 	)
 }
@@ -188,7 +190,7 @@ for lang in %langlist; do
 	# l10n
 	mkdir ${language}
 	cd ${language}
-	unzip %{_sourcedir}/${language}.xpi
+	unzip -qq %{_sourcedir}/${language}.xpi
 	cd ..
 
 	# dict
@@ -196,19 +198,6 @@ for lang in %langlist; do
 	dict=${!dict}
 	[ $dict -eq 0 ] && continue
 
-	mkdir -p ${language}-dict/dictionaries
-	cd ${language}-dict
-	if [ -e %{_datadir}/dict/ooo/$lang.aff ]; then
-		ln -s %{_datadir}/dict/ooo/$lang.aff ./dictionaries/$language.aff
-		ln -s %{_datadir}/dict/ooo/$lang.dic ./dictionaries/$language.dic
-	elif [ -e %{_datadir}/dict/ooo/$locale.aff ]; then
-		ln -s %{_datadir}/dict/ooo/$locale.aff ./dictionaries/$language.aff
-		ln -s %{_datadir}/dict/ooo/$locale.dic ./dictionaries/$language.dic
-	else
-		ln -s %{_datadir}/dict/ooo/${locale}_*.aff ./dictionaries/$language.aff
-		ln -s %{_datadir}/dict/ooo/${locale}_*.dic ./dictionaries/$language.dic
-	fi
-	cd ..
 done
 
 %build
@@ -223,11 +212,6 @@ rm -rf %buildroot
 %{expand:%(for lang in %langlist; do echo "with_$lang=%%{with_$lang}"; done)}
 %{expand:%(for lang in %langlist; do echo "dict_$lang=%%{with_dict_$lang}"; done)}
 
-# Create dicts dir
-%if %use_dict
-mkdir -p %buildroot%{mozillalibdir}/dictionaries
-%endif
-
 # Install all languages
 for lang in %langlist; do
 	with="with_$lang"
@@ -239,8 +223,8 @@ for lang in %langlist; do
 
 	# l10n
 	cd $language
-	mkdir -p %buildroot%{mozillalibdir}/extensions/langpack-${language}@sunbird.mozilla.org/
-	cp -f -r * %buildroot%{mozillalibdir}/extensions/langpack-${language}@sunbird.mozilla.org/
+	mkdir -p %buildroot%{sunbird_extdir}/langpack-${language}@sunbird.mozilla.org/
+	cp -f -r * %buildroot%{sunbird_extdir}/langpack-${language}@sunbird.mozilla.org/
 	cd ..
 
 	# Dicts
@@ -248,8 +232,6 @@ for lang in %langlist; do
 	dict=${!dict}
 	[ $dict -eq 0 ] && continue
 
-	cp -af $language-dict/dictionaries/*.{aff,dic} \
-		%buildroot%{mozillalibdir}/dictionaries/
 done
 
 %clean
