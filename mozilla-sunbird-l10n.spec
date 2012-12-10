@@ -237,3 +237,72 @@ done
 %clean
 rm -rf %buildroot
 
+
+
+%changelog
+* Sun Jan 30 2011 Funda Wang <fwang@mandriva.org> 0.9-5mdv2011.0
++ Revision: 634039
+- restruct to new mozilla layout
+
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0.9-4mdv2011.0
++ Revision: 620397
+- the mass rebuild of 2010.0 packages
+
+* Mon Sep 14 2009 Thierry Vignaud <tv@mandriva.org> 0.9-3mdv2010.0
++ Revision: 440140
+- rebuild
+
+* Mon Jan 12 2009 Funda Wang <fwang@mandriva.org> 0.9-2mdv2009.1
++ Revision: 328580
+- rebuild for new rpm
+
+* Fri Nov 21 2008 Funda Wang <fwang@mandriva.org> 0.9-1mdv2009.1
++ Revision: 305431
+- drop merged patch
+- update URL
+- New version 0.9
+
+* Fri Aug 08 2008 Thierry Vignaud <tv@mandriva.org> 0.8-4mdv2009.0
++ Revision: 268150
+- rebuild early 2009.0 package (before pixel changes)
+
+* Tue May 13 2008 Funda Wang <fwang@mandriva.org> 0.8-3mdv2009.0
++ Revision: 206538
+- fix obsolete old package
+
+* Fri May 09 2008 Funda Wang <fwang@mandriva.org> 0.8-2mdv2009.0
++ Revision: 204812
+- obsoletes old lang packages
+
+* Sun May 04 2008 Funda Wang <fwang@mandriva.org> 0.8-1mdv2009.0
++ Revision: 200989
+- Switch to firefox-l10n template
+- New version 0.8
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Tue Oct 30 2007 Jérôme Soyer <saispo@mandriva.org> 0.7-1mdv2008.1
++ Revision: 103865
+- Update
+
+* Wed Sep 19 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.5-2mdv2008.0
++ Revision: 89950
+- rebuild
+
+* Sun Sep 09 2007 Colin Guthrie <cguthrie@mandriva.org> 0.5-1mdv2008.0
++ Revision: 83452
+- Update for Sunbird 0.5
+
+
+* Sun Feb 25 2007 Jérôme Soyer <saispo@mandriva.org> 0.3.1-2mdv2007.0
++ Revision: 125445
+- Rebuild
+
+* Fri Dec 08 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.3-1mdv2007.1
++ Revision: 93603
+- Import mozilla-sunbird-l10n
+

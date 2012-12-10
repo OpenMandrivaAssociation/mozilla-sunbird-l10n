@@ -1,0 +1,32 @@
+%if %{with___LANG__}
+%package -n %{oname}-__LANG__
+Summary: %{langname___LANG__} interface for Sunbird
+License: GPL
+Group: Networking/WWW
+Url: http://www.mozilla.org/products/sunbird/
+Requires: mozilla-sunbird = %{version}
+Requires: locales-%{locale___LANG__}
+Obsoletes: %{oname}-__LANG__ < %{version}-%{release}
+%if __LANG__ == pt_PT
+Obsoletes: %{oname}-pt < 0.8
+%endif
+%if __LANG__ == es_ES
+Obsoletes: %{oname}-es < 0.8
+%endif
+%if __LANG__ == nb_NO
+Obsoletes: %{oname}-nb < 0.8
+%endif
+%if __LANG__ == sv_SE
+Obsoletes: %{oname}-sv < 0.8
+%endif
+%if __LANG__ == pa_IN
+Obsoletes: %{oname}-pa < 0.8
+%endif
+
+%description -n %{oname}-__LANG__
+%{langname___LANG__} localization for Sunbird
+
+%files -n %{oname}-__LANG__
+%defattr(644,root,root,755)
+%{sunbird_extdir}/langpack-%{language___LANG__}@sunbird.mozilla.org
+%endif
