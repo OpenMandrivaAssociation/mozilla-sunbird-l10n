@@ -129,7 +129,7 @@ Version: %{version}
 Release: %{release}
 License: GPL
 Group: Networking/WWW
-Url: http://www.mozilla.org/projects/calendar/sunbird/
+Url: https://www.mozilla.org/projects/calendar/sunbird/
 BuildArch: noarch
 # Language package template
 Source0: %{name}-template.in
